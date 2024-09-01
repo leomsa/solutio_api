@@ -43,14 +43,4 @@ public class ProductController {
         Product updatedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(updatedProduct);
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        if (!productService.getProductById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        productService.deleteProduct(id);
-        return ResponseEntity.noContent().build();
-    }
-
 }
