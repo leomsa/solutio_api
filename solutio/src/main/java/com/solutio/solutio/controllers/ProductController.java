@@ -35,4 +35,7 @@ public class ProductController {
         return productRepository.findById(id);
     }
 
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
+    }
 }
