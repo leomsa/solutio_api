@@ -27,15 +27,4 @@ public class ProductController {
         return ResponseEntity.ok(saveProduct);
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
-
-    public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
-    }
-
-    public void deleteProductById(Long id) {
-        productRepository.deleteById(id);
-    }
 }

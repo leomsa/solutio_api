@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class ProcuctService {
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -23,6 +24,5 @@ public class ProcuctService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
-
 
 }
