@@ -34,4 +34,13 @@ public class ProductController {
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        if (!productService.getProductById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        product.setId(id);
+        Product updatedProduct = productService.saveProduct(product);
+        return ResponseEntity.ok(updatedProduct);
+    }
 }
