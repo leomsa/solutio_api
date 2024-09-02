@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/products")
@@ -42,5 +43,14 @@ public class ProductController {
         product.setId(id);
         Product updatedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(updatedProduct);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        if (!productService.getProductById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
